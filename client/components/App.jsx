@@ -4,7 +4,7 @@ const App = props => {
   return (
     <div>
       <main>
-        <h1>HelloWorldthisisReciSmith</h1>
+        <h1>HelloWorld</h1>
       </main>
     </div>
   )

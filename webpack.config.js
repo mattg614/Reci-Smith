@@ -13,6 +13,21 @@ module.exports = {
       template: './client/index.html',
     }),
   ],
+  mode: 'development',
+  devServer: {
+    host: 'localhost',
+    port: 8080,
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+      publicPath: '/',
+    },
+    proxy: {
+      '/api/**': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
+    },
+  },
   module: {
     rules: [
       {
