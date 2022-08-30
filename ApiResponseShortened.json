@@ -1,0 +1,86 @@
+{
+"recipes": [
+        {
+            "extendedIngredients": [
+                {
+                    "original": "4 burger buns"
+                },
+                {
+                    "original": "1 tablespoon Fresh Basil, Chopped (about 5 leaves worth)"
+                },
+                {
+                    "original": "1 clove Garlic"
+                },
+                {
+                    "original": "1 Green Onion, Chopped"
+                },
+                {
+                    "original": "1/4 Lime, Juiced"
+                },
+                {
+                    "original": "1/4 cup Mayonnaise"
+                },
+                {
+                    "original": "1 teaspoon Oyster Sauce"
+                },
+                {
+                    "original": "1/2 teaspoon Powdered Ginger",
+                },
+                {
+                    "original": "1 pound Salmon",
+                },
+                {
+                    "original": "5 1/2 tablespoons Sesame Oil",
+                },
+                {
+                    "original": "2 tablespoons Sour Cream",
+                },
+                {
+                    "original": "1 tablespoon Soy Sauce"
+                }
+            ],
+            "id": 632874,
+            "title": "Asian Salmon Burgers With Tangy Ginger Lime Sauce",
+            "readyInMinutes": 30,
+            "servings": 4,
+            "sourceUrl": "http://www.foodista.com/recipe/FRT38YTC/asian-salmon-burgers-with-tangy-ginger-lime-sauce",
+            "image": "https://spoonacular.com/recipeImages/632874-556x370.jpg",
+            "imageType": "jpg",
+            "cuisines": [
+                "American"
+            ],
+            "analyzedInstructions": [
+                {
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Cut the salmon into large hunks and run it through a food processor until no large pieces remain."
+
+                        },
+                        {
+                            "number": 2,
+                            "step": "Add to the salmon the soy sauce, garlic, ginger, oyster sauce, green onion, and basil."
+ 
+                        },
+                        {
+                            "number": 3,
+                            "step": "Combine ingredients well and form 4 large patties from mixture."
+                        },
+                        {
+                            "number": 4,
+                            "step": "Heat up the sesame oil in a large frying pan on medium high heat and add in the patties. Cook for about 10 minutes flipping once half way through.To make the sauce, add together all the above listed ingredients and stir to combine."
+                        },
+                        {
+                            "number": 5,
+                            "step": "Pour a spoonful of sauce over the top of the finished salmon burger and serve inside a toasted bun."
+                        }
+                    ]
+                }
+            ],
+            "sourceName": null,
+            "creditsText": null,
+            "originalId": null,
+            "spoonacularSourceUrl": "https://spoonacular.com/asian-salmon-burgers-with-tangy-ginger-lime-sauce-632874"
+        }
+    ]
+}
