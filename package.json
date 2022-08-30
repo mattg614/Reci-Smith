@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server --mode development --open --hot",
+    "build" : "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "MattGarza",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1",
@@ -20,6 +22,7 @@
     "@babel/core": "^7.18.13",
     "@babel/preset-env": "^7.18.10",
     "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^8.2.5",
     "eslint": "^8.23.0",
     "eslint-plugin-react": "^7.31.1",
     "file-loader": "^6.2.0",
