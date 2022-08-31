@@ -50,5 +50,82 @@ recipeController.createRecipe = (req, res, next) => {
     next();
   });
 };
+recipeController.getFavs = async (req, res, next) => {
+  // const favorites = [];
+  customRecipe.find({ favorited: true }, (err, favs) => {
+    if (err) {
+      next({
+        log: 'Error trying to get favorites from customRecipe in recipeController.getFavs',
+        status: 500,
+        message: {
+          err: `An error occurred trying to get favorites from customRecipe, ${err}`,
+        },
+      });
+    }
+
+    res.locals.favs = favs;
+    randomRecipe.find({ favorited: true }, (err, favs) => {
+      if (err) {
+        next({
+          log: 'Error trying to get favorites from randomRecipe in recipeController.getFavs',
+          status: 500,
+          message: {
+            err: `An error occurred trying to get favorites from randomRecipe, ${err}`,
+          },
+        });
+      }
+      res.locals.favs = res.locals.favs.concat(favs);
+      Recipe.find({ favorited: true }, (err, favs) => {
+        if (err) {
+          next({
+            log: 'Error trying to get favorites from Recipe in recipeController.getFavs',
+            status: 500,
+            message: {
+              err: `An error occurred trying to get favorites from Recipe, ${err}`,
+            },
+          });
+        }
+        res.locals.favs = res.locals.favs.concat(favs);
+        next();
+      });
+    });
+  });
+};
+recipeController.addFavorites = (req, res, next) => {
+  const { _id, collectionName } = req.body;
+  console.log(_id, collectionName);
+  if (collectionName === 'recipes') {
+    Recipe.findOneAndUpdate(
+      { _id },
+      { $set: { favorited: true } },
+      { upsert: false },
+      (err, recipe) => {
+        res.locals.favorite = recipe;
+      }
+    );
+    // Recipe.find({ _id }, (err, recipe) => {
+    //   console.log(recipe);
+    // });
+  } else if (collectionName === 'randomrecipes') {
+    randomRecipe.findOneAndUpdate(
+      { _id },
+      { $set: { favorited: true } },
+      { upsert: false },
+      (err, recipe) => {
+        res.locals.favorite = recipe;
+      }
+    );
+  } else if (collectionName === 'customrecipes') {
+    customRecipe.findOneAndUpdate(
+      { _id },
+      { $set: { favorited: true } },
+      { upsert: false },
+      (err, recipe) => {
+        res.locals.favorite = recipe;
+      }
+    );
+  }
+  next();
+};
 
 module.exports = recipeController;

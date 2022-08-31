@@ -34,6 +34,7 @@ const recipeSchema = new Schema({
   instructions: {},
   favorited: Boolean,
   spoonacularSourceURL: String,
+  collectionName: String,
 });
 const cuisineRecipeSchema = new Schema({
   title: String,
@@ -49,6 +50,7 @@ const cuisineRecipeSchema = new Schema({
   instructions: {},
   favorited: Boolean,
   spoonacularSourceURL: String,
+  collectionName: String,
 });
 const customRecipeSchema = new Schema({
   title: String,
@@ -61,6 +63,7 @@ const customRecipeSchema = new Schema({
   favorited: Boolean,
   ingredients: [String],
   instructions: {},
+  collectionName: String,
 });
 const Recipe = mongoose.model('recipe', cuisineRecipeSchema);
 const customRecipe = mongoose.model('customRecipe', customRecipeSchema);
