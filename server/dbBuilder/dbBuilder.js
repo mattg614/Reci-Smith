@@ -7,10 +7,10 @@ const path = require('path');
 const { apiKEY } = require('../../keys/keys');
 
 const jsonContents = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, './postmanPulls/random200.json'))
+  fs.readFileSync(path.resolve(__dirname, './postmanPulls/caribbean.json'))
 );
 // const cuisine = 'chinese';
-// const cuisine = 'british';
+const cuisine = 'caribbean';
 
 // const spoonacularResult = await fetch(url);
 // const recipesJSON = await spoonacularResult.json();
@@ -36,7 +36,7 @@ jsonContents.recipes.forEach((recipe) => {
       return acc;
     }, []);
   }
-  randomRecipe.create(
+  Recipe.create(
     {
       title: recipe.title,
       spoonacularId: recipe.id,
@@ -45,7 +45,7 @@ jsonContents.recipes.forEach((recipe) => {
       sourceUrl: recipe.sourceUrl,
       image: recipe.image,
       imageType: recipe.imageType,
-      cuisine: recipe.cuisines,
+      cuisine: cuisine,
       ingredients: ingredients,
       instructions: instructions,
       spoonacularSourceURL: recipe.spoonacularSourceUrl,
