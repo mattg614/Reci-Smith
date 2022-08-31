@@ -1,16 +1,12 @@
 //this is only run for being able to populate the mongo db with the first entries
 //subsequent hits to the recipe api will be handled in server / routes
 
-const fetch = require('node-fetch');
 const mongoose = require('mongoose');
 const MongoClient = require('mongodb').MongoClient;
 
-const apiKey = 'c83a2bf3a31f4f5ba7de2db98305b3b2';
 const dbName = 'SoloProjDB';
 const url = 'mongodb://127.0.0.1:27017';
-let db;
-// const MONGO_URI =
-//   'mongodb+srv://mgarza143:rNkCIx4wyMRnhSdG@cluster0.ko8muep.mongodb.net/?retryWrites=true&w=majority';
+
 const MONGO_URI = 'mongodb://127.0.0.1:27017';
 mongoose
   .connect(MONGO_URI, {
@@ -32,28 +28,15 @@ const recipeSchema = new Schema({
   sourceUrl: String,
   image: String,
   imageType: String,
-  cuisines: [String],
+  cuisine: [String],
 
-  ingredients: [
-    {
-      ingredientDescription: String,
-    },
-  ],
-  instructions: [
-    {
-      steps: [
-        {
-          number: Number,
-          step: String,
-        },
-      ],
-    },
-  ],
+  ingredients: [String],
+  instructions: {},
   spoonacularSourceURL: String,
 });
 const Recipe = mongoose.model('recipe', recipeSchema);
 const customRecipe = mongoose.model('customRecipe', recipeSchema);
-
+const randomRecipe = mongoose.model('randomRecipe', recipeSchema);
 /*
 "recipes" : [
   {
@@ -81,4 +64,4 @@ const customRecipe = mongoose.model('customRecipe', recipeSchema);
 ]
 */
 
-module.exports = { Recipe, customRecipe };
+module.exports = { Recipe, customRecipe, randomRecipe };
