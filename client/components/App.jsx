@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
+import Home from './Home';
+import Create from './Create';
+import Favorites from './Favorites';
 
 const App = props => {
   return (
-    <div>
-      <main>
-        <h1>HelloWorld</h1>
-      </main>
-    </div>
-  )
-}
-
+    <Home />
+  );
+};
 export default App;
