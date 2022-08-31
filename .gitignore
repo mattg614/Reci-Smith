@@ -17,3 +17,6 @@ dist/
 
 # jest coverage
 coverage/
+
+#keys file
+keys/

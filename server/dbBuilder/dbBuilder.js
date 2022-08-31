@@ -4,13 +4,14 @@ const fetch = require('node-fetch');
 const { Recipe, customRecipe, randomRecipe } = models;
 const fs = require('fs');
 const path = require('path');
+const { apiKEY } = require('../../keys/keys');
 
 const jsonContents = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, './postmanPulls/random200.json'))
 );
 // const cuisine = 'chinese';
 // const cuisine = 'british';
-// const url = `https://api.spoonacular.com/recipes/random?number=50&tags=${cuisine}&apiKey=c83a2bf3a31f4f5ba7de2db98305b3b2`;
+
 // const spoonacularResult = await fetch(url);
 // const recipesJSON = await spoonacularResult.json();
 jsonContents.recipes.forEach((recipe) => {
@@ -58,13 +59,13 @@ jsonContents.recipes.forEach((recipe) => {
   );
 });
 
-// https://api.spoonacular.com/recipes/random?number=10&tags=american&apiKey=c83a2bf3a31f4f5ba7de2db98305b3b2
+const uri = `https://api.spoonacular.com/recipes/random?number=10&tags=american&apiKey=${apiKEY}`;
 
 // const baseSpoonacularURL = 'https://api.spoonacular.com/recipes/';
 // const spoonacularQuery = 'random';
 // const requestNumber = 'number=90';
 // const tags = 'tags=american';
-// const apiKey = 'apiKey=c83a2bf3a31f4f5ba7de2db98305b3b2';
+// const apiKey = `apiKey=${apiKey}`;
 // const cuisines = [
 //   'African',
 //   'British',
