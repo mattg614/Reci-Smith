@@ -32,6 +32,7 @@ const recipeSchema = new Schema({
 
   ingredients: [String],
   instructions: {},
+  favorited: Boolean,
   spoonacularSourceURL: String,
 });
 const cuisineRecipeSchema = new Schema({
@@ -46,6 +47,7 @@ const cuisineRecipeSchema = new Schema({
 
   ingredients: [String],
   instructions: {},
+  favorited: Boolean,
   spoonacularSourceURL: String,
 });
 const customRecipeSchema = new Schema({
@@ -56,7 +58,7 @@ const customRecipeSchema = new Schema({
   image: String,
   imageType: String,
   cuisine: String,
-
+  favorited: Boolean,
   ingredients: [String],
   instructions: {},
 });
