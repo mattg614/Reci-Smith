@@ -48,8 +48,20 @@ const cuisineRecipeSchema = new Schema({
   instructions: {},
   spoonacularSourceURL: String,
 });
+const customRecipeSchema = new Schema({
+  title: String,
+  readyInMinutes: Number,
+  servings: Number,
+  sourceUrl: String,
+  image: String,
+  imageType: String,
+  cuisine: String,
+
+  ingredients: [String],
+  instructions: {},
+});
 const Recipe = mongoose.model('recipe', cuisineRecipeSchema);
-const customRecipe = mongoose.model('customRecipe', recipeSchema);
+const customRecipe = mongoose.model('customRecipe', customRecipeSchema);
 const randomRecipe = mongoose.model('randomRecipe', recipeSchema);
 /*
 "recipes" : [

@@ -7,10 +7,10 @@ const path = require('path');
 const { apiKEY } = require('../../keys/keys');
 
 const jsonContents = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, './postmanPulls/caribbean.json'))
+  fs.readFileSync(path.resolve(__dirname, './postmanPulls/mexican.json'))
 );
 // const cuisine = 'chinese';
-const cuisine = 'caribbean';
+const cuisine = 'mexican';
 
 // const spoonacularResult = await fetch(url);
 // const recipesJSON = await spoonacularResult.json();

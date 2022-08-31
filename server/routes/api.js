@@ -8,4 +8,7 @@ router.get('/', recipeController.getRecipes, (req, res) => {
 router.get('/rand', recipeController.getCuisineRecipes, (req, res) => {
   res.status(200).json(res.locals.recipes);
 });
+router.post('/', recipeController.createRecipe, (req, res) => {
+  res.status(200).json(res.locals.recipe);
+});
 module.exports = router;

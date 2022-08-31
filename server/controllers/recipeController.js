@@ -1,5 +1,5 @@
 const models = require('../models/recipesModels');
-const { randomRecipe, Recipe } = models;
+const { randomRecipe, Recipe, customRecipe } = models;
 
 const recipeController = {};
 
@@ -32,6 +32,21 @@ recipeController.getCuisineRecipes = (req, res, next) => {
       });
     }
     res.locals.recipes = recipes;
+    next();
+  });
+};
+recipeController.createRecipe = (req, res, next) => {
+  customRecipe.create(req.body, (err, recipe) => {
+    if (err) {
+      next({
+        log: 'Error creating recipe in recipeController.createRecipe',
+        status: 500,
+        message: {
+          err: `An error occurred in recipeController.createRecipe, ${err}`,
+        },
+      });
+    }
+    res.locals.recipe = recipe;
     next();
   });
 };
