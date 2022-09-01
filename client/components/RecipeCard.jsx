@@ -19,13 +19,10 @@ const RecipeCard = props => {
       <li>{instructions[i]}</li>
     );
   }
-  const modalDetails = [
-    
-  ]
+
   return (
     <section>
       <h3>{recipe.title}</h3>
-      <Button variant="outlined">{recipe.title}</Button>
       <img className= "recipeImage" src={recipe.image} alt={`${recipe.title} image`} />
       
       <h4>Ingredients: </h4>

@@ -9,7 +9,23 @@ import Container from '@mui/material/Container';
 import StarIcon from '@mui/icons-material/Star';
 import { useState, useEffect } from 'react';
 import { Card, Tooltip } from '@mui/material';
-
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import CloseIcon from '@mui/icons-material/Close';
+import RecipeCard from '../RecipeCard';
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  pt: 2,
+  px: 4,
+  pb: 3,
+};
 const Home = props => {
   
   const [recipes, getRecipes] = useState([]);
@@ -52,6 +68,21 @@ const Home = props => {
     }).then((resp) => resp.json()).then((json) => getRecipes(json));
     // };
   }, [fav]);
+  const [open, setOpen] = useState(false);
+  // const handleOpen = () => {
+  //   setOpen(true);
+  // };
+  const handleClose = () => {
+    console.log('handle close')
+    setOpen(false);
+  };
+  const [openedRecipe, setOpenedRecipe] = useState({});
+  const handleOpen = recipe => {
+    console.log(recipe);
+    setOpen(true);
+    setOpenedRecipe(recipe);
+  };
+
   return (
     <Container sx={{marginTop:10}}>
 
@@ -95,13 +126,54 @@ const Home = props => {
                     sx={{ background: 'linear-gradient(to top, rgba(0,0,0,0.7)100%, rgba(0,0,0,.3)50%, rgba(0,0,0,0)0%' }}
                     actionIcon={
                       <IconButton
-                        sx={{ color: 'rgba(255, 255, 255, 0.54)', mr: '5px' }}
+                        onClick={(e) => {
+                          handleOpen(recipe);
+                        }} sx={{ color: 'rgba(255, 255, 255, 0.54)', mr: '5px' }}
                         aria-label={`Details about ${recipe.title}`}>
                         <InfoIcon />
+                        {/* <Modal
+                          hideBackdrop
+                          open={open}
+                          onClose={handleClose}
+                          aria-labelledby="parent-modal-title"
+                          aria-describedby="parent-modal-description"
+                        >
+                          <Box sx={{ ...style, width: 400 }}>
+                            <h2 id="parent-modal-title">Text in a modal</h2>
+                            <p id="parent-modal-description">
+                              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                            </p>
+                          </Box>
+                        </Modal> */}
                       </IconButton>
+                      
                     }
                   />
                 </ImageListItem>
+                <Modal
+                  hideBackdrop
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="parent-modal-title"
+                  aria-describedby="parent-modal-description"
+                >
+                  <Box sx={{ ...style, width: 400 , height: '75%', overflow: 'scroll'}}>
+                    <IconButton  onClick={handleClose}>
+                      <CloseIcon />
+                    </IconButton>
+                    {/* <img
+                      src={`${openedRecipe.image}`}
+                      srcSet={`${openedRecipe.image}`}
+                      alt={openedRecipe.title}
+                      loading="lazy"
+                    />
+                    <h2 id="parent-modal-title">openedRecipe.title</h2>
+                    <p id="parent-modal-description">
+                              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                    </p> */}
+                    <RecipeCard recipe={openedRecipe} />
+                  </Box>
+                </Modal>
               </Card>
             );
           })

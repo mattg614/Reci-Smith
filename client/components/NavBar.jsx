@@ -7,11 +7,12 @@ import AllRecipes from './home/Home';
 import Favorites from './favorites/favorites';
 import ViewCustoms from './viewCustoms/viewCustoms';
 import AddCustoms from './addCustom/addCustom';
+
 class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 0,
+      value: 3,
     };
     this.setValue = this.setValue.bind(this);
   }
