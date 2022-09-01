@@ -36,6 +36,7 @@ recipeController.getCuisineRecipes = (req, res, next) => {
   });
 };
 recipeController.createRecipe = (req, res, next) => {
+  console.log(req.body);
   customRecipe.create(req.body, (err, recipe) => {
     if (err) {
       next({
