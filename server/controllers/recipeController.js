@@ -50,8 +50,26 @@ recipeController.createRecipe = (req, res, next) => {
     next();
   });
 };
+recipeController.getCustoms = (req, res, next) => {
+  customRecipe.find({}, (err, recipes) => {
+    if (err) {
+      next({
+        log: 'Error getting custom recipes in recipeController.getCustoms',
+        status: 500,
+        message: {
+          err: `An error occurred in recipeController.getCustoms, ${err}`,
+        },
+      });
+    }
+    // console.log(recipes);
+    res.locals.customs = recipes;
+    next();
+  });
+};
+
 recipeController.getFavs = async (req, res, next) => {
   // const favorites = [];
+  console.log('infavorites');
   customRecipe.find({ favorited: true }, (err, favs) => {
     if (err) {
       next({

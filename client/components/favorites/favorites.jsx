@@ -10,26 +10,27 @@ import StarIcon from '@mui/icons-material/Star';
 import { useState, useEffect } from 'react';
 import { Card, Tooltip } from '@mui/material';
 
-const Home = props => {
-  
+const ViewFavorites = props => {
+  const { value } = props;
   const [recipes, getRecipes] = useState([]);
   useEffect(() => {
-    const url = '/api/';
+    const url = '/api/favs';
     const fetchData = async () => {
       
       try {
         const response = await fetch(url);
         const json = await response.json();
+        console.log(json);
         getRecipes(json);
       } catch (error) {
         console.log('error', error);
       };
     };
     fetchData();
-  }, [reRender]);
+  }, [value]);
+  console.log(recipes);
   // const [recipe, setFavorite] = useState(null);
   const [fav, setFavorite] = useState({});
-  const [reRender, setRerender] = useState(0);
   useEffect(() => {
     // const toggleFavorite = (e, orecipe) => {
     // console.log(e.target.style);
@@ -50,14 +51,14 @@ const Home = props => {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    }).then((resp) => {
-      setRerender(reRender+1)
-      resp.json();
-    }).then((json) => getRecipes(json));
+    }).then((resp) => resp.json()).then((json) => {
+      console.log(json);
+      // getRecipes(json)
+    });
     // };
   }, [fav]);
   return (
-    <Container >
+    <Container sx={{marginTop:10}}>
 
       <ImageList
         gap={12}
@@ -119,84 +120,4 @@ const Home = props => {
 
 
 
-export default Home;
-
-
-//   return (
-//     <ImageList sx={{
-//       width: 750, height: 1000, backgroundColor: 'primary.dark','&:hover': {backgroundColor: 'primary.main',
-//         opacity: [[0.9, 0.8, 0.7]]}}}>
-//       <ImageListItem key="Subheader" cols={2}>
-//         <ListSubheader component="div">ReciSmith</ListSubheader>
-//       </ImageListItem>
-//       {recipes.map((item) => (
-//         <ImageListItem key={item.img}>
-//           <img
-//             src={`${item.image}`}
-//             srcSet={`${item.image}`}
-//             alt={item.title}
-//             loading="lazy"
-//           />
-//           <ImageListItemBar
-//             title={item.title}
-//             subtitle={item.sourceURL}
-//             actionIcon={
-//               <IconButton
-//                 sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-//                 aria-label={`info about ${item.title}`}
-//               >
-//                 <InfoIcon />
-//               </IconButton>
-              
-//             }
-//           />
-//         </ImageListItem>
-//       ))}
-//     </ImageList>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-// import React, { Component, useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-// import RecipeCard from './RecipeCard';
-
-// const Home = props => {
-  
-//   const [recipes, getRecipes] = useState([]);
-//   useEffect(() => {
-//     const url = '/api/';
-//     const fetchData = async () => {
-      
-//       try {
-//         const response = await fetch(url);
-//         const json = await response.json();
-//         getRecipes(json);
-//       } catch (error) {
-//         console.log('error', error);
-//       };
-//     };
-//     fetchData();
-//   }, []);
-//   const recipeComponents = [];
-//   recipes.forEach((recipe) => {
-//     recipeComponents.push(
-//       <RecipeCard recipe={recipe} />
-//     );
-//   });
-//   return (
-//     <main>
-//       {recipeComponents}
-//     </main>
-//   );
-// };
-// export default Home;
+export default ViewFavorites;
