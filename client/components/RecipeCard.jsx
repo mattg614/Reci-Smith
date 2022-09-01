@@ -1,5 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
-
+import { FontAwesomeIcon as FAIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
+import Button from '@mui/material/Button';
 const RecipeCard = props => {
   const { recipe } = props;
   console.log(recipe.ingredients);
@@ -17,10 +19,14 @@ const RecipeCard = props => {
       <li>{instructions[i]}</li>
     );
   }
+  const modalDetails = [
+    
+  ]
   return (
     <section>
       <h3>{recipe.title}</h3>
-      <img src={recipe.image} alt={`${recipe.title} image`} />
+      <Button variant="outlined">{recipe.title}</Button>
+      <img className= "recipeImage" src={recipe.image} alt={`${recipe.title} image`} />
       
       <h4>Ingredients: </h4>
       <ul className="ingredients">

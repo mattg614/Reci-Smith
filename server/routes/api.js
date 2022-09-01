@@ -14,7 +14,12 @@ router.post('/', recipeController.createRecipe, (req, res) => {
 router.get('/favs', recipeController.getFavs, (req, res) => {
   res.status(200).json(res.locals.favs);
 });
-router.patch('/favs', recipeController.addFavorites, (req, res) => {
-  res.status(200).send(res.locals.favorite);
-});
+router.patch(
+  '/favs',
+  recipeController.addFavorites,
+  recipeController.getRecipes,
+  (req, res) => {
+    res.status(200).json(res.locals.recipes);
+  }
+);
 module.exports = router;

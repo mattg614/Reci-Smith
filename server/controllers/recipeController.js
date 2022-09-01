@@ -92,12 +92,12 @@ recipeController.getFavs = async (req, res, next) => {
   });
 };
 recipeController.addFavorites = (req, res, next) => {
-  const { _id, collectionName } = req.body;
+  const { _id, collectionName, favorited } = req.body;
   console.log(_id, collectionName);
   if (collectionName === 'recipes') {
     Recipe.findOneAndUpdate(
       { _id },
-      { $set: { favorited: true } },
+      { $set: { favorited: favorited } },
       { upsert: false },
       (err, recipe) => {
         res.locals.favorite = recipe;
@@ -109,7 +109,7 @@ recipeController.addFavorites = (req, res, next) => {
   } else if (collectionName === 'randomrecipes') {
     randomRecipe.findOneAndUpdate(
       { _id },
-      { $set: { favorited: true } },
+      { $set: { favorited: favorited } },
       { upsert: false },
       (err, recipe) => {
         res.locals.favorite = recipe;
@@ -118,7 +118,7 @@ recipeController.addFavorites = (req, res, next) => {
   } else if (collectionName === 'customrecipes') {
     customRecipe.findOneAndUpdate(
       { _id },
-      { $set: { favorited: true } },
+      { $set: { favorited: favorited } },
       { upsert: false },
       (err, recipe) => {
         res.locals.favorite = recipe;

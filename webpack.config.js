@@ -41,6 +41,11 @@ module.exports = {
         },
       },
       //TODO add in css and scss later
+      {
+        test: /.(css|scss)$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {
