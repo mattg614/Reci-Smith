@@ -23,7 +23,10 @@ const RecipeCard = props => {
   return (
     <section>
       <h3>{recipe.title}</h3>
-      <img className= "recipeImage" src={recipe.image} alt={`${recipe.title} image`} />
+      {{true:
+        <img className="recipeImage" src={recipe.image} alt={`${recipe.title} image`} />
+      } [recipe.image !== undefined]
+      }
       
       <h4>Ingredients: </h4>
       <ul className="ingredients">
